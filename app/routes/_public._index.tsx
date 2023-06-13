@@ -18,10 +18,10 @@ export default function Index() {
         <p className="pt-6">
           The github repo for this site is located at{" "}
           <Link
-            to="https://github.com/thaniel5/ethangcampbell"
+            to="https://github.com/thaniel5/ethangcampbell-app"
             className="text-blue-500 hover:text-blue-700"
           >
-            https://github.com/thaniel5/ethangcampbell
+            https://github.com/thaniel5/ethangcampbell-app
           </Link>
         </p>
       </div>

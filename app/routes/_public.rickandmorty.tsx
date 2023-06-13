@@ -54,7 +54,10 @@ export default function RickAndMorty() {
   return (
     <div className="flex flex-wrap content-between justify-around gap-y-10">
       {data.imageUrls.map((url) => (
-        <img key={url.image} alt={url.name} src={url.image} />
+        <div key={url.image}>
+          <h1 className="text-2xl font-semibold">{url.name}</h1>
+          <img alt={url.name} src={url.image} className="h-[300px] w-[300px]" />
+        </div>
       ))}
     </div>
   );
