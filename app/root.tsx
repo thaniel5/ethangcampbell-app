@@ -4,13 +4,13 @@ import {
   Links,
   LiveReload,
   Meta,
+  NavLink,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
 
 import stylesheet from "~/tailwind.css";
-import Header from "~/components/header";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -27,9 +27,21 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
-        <Header />
-        <main className="mt-14 px-44 py-40 text-center">
+      <body className="h-full bg-gray-700">
+        <header className="fixed top-0 w-full border-b border-b-gray-300 bg-gray-800 py-5 text-sm font-semibold text-gray-300">
+          <div className="flex justify-center gap-7">
+            <NavLink to="/" className="hover:text-blue-600">
+              Home
+            </NavLink>
+            <NavLink to="rickandmorty" className="hover:text-blue-600">
+              Rick and Morty
+            </NavLink>
+            <NavLink to="about" className="hover:text-blue-600">
+              About
+            </NavLink>
+          </div>
+        </header>
+        <main className="mt-14 text-center">
           <Outlet />
         </main>
         <ScrollRestoration />

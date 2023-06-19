@@ -2,12 +2,12 @@ import { Link } from "@remix-run/react";
 
 export default function Index() {
   return (
-    <div>
-      <h1 className="text-6xl font-semibold">
+    <div className="mx-auto py-40">
+      <h1 className="text-6xl font-semibold text-gray-100">
         <div>Ethan Campbell</div>
         <div className="text-green-500">Web Dev</div>
       </h1>
-      <div className="pt-16 text-gray-500">
+      <div className="pt-16 text-gray-200">
         <p>
           I am a professional web developer focused on high quality user
           experiences.

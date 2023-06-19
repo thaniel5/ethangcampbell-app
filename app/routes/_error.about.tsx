@@ -2,11 +2,11 @@ import { Link } from "@remix-run/react";
 
 export default function About() {
   return (
-    <div>
-      <h1 className="text-6xl font-semibold">
+    <div className="mx-auto w-5/6 py-40 lg:w-1/3">
+      <h1 className="text-6xl font-semibold text-gray-100">
         <div>About Me</div>
       </h1>
-      <div className="pt-16 text-gray-500">
+      <div className="pt-16 text-gray-200">
         <p>
           My name is Ethan Campbell. I am a professional web developer living in
           Carmel, Indiana. I have been working for almost a decade in various

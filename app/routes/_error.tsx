@@ -7,8 +7,10 @@ export default function Public() {
 export function ErrorBoundary() {
   const error = useRouteError();
 
+  let content = null;
+
   if (isRouteErrorResponse(error)) {
-    return (
+    content = (
       <div>
         <h1>
           {error.status} {error.statusText}
@@ -17,7 +19,7 @@ export function ErrorBoundary() {
       </div>
     );
   } else if (error instanceof Error) {
-    return (
+    content = (
       <div>
         <h1>Error</h1>
         <p>{error.message}</p>
@@ -26,6 +28,8 @@ export function ErrorBoundary() {
       </div>
     );
   } else {
-    return <h1>Unknown Error</h1>;
+    content = <h1>Unknown Error</h1>;
   }
+
+  return <div className="py-40 text-gray-200">{content}</div>;
 }
