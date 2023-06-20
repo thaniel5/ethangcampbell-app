@@ -28,20 +28,20 @@ export default function App() {
         <Links />
       </head>
       <body className="h-full bg-gray-700">
-        <header className="fixed top-0 w-full border-b border-b-gray-300 bg-gray-800 py-5 text-sm font-semibold text-gray-300">
+        <header className="w-full py-5 font-semibold text-gray-300">
           <div className="flex justify-center gap-7">
-            <NavLink to="/" className="hover:text-blue-600">
+            <NavLink to="/" className="hover:text-green-500">
               Home
             </NavLink>
-            <NavLink to="rickandmorty" className="hover:text-blue-600">
+            <NavLink to="rickandmorty" className="hover:text-green-500">
               Rick and Morty
             </NavLink>
-            <NavLink to="about" className="hover:text-blue-600">
+            <NavLink to="about" className="hover:text-green-500">
               About
             </NavLink>
           </div>
         </header>
-        <main className="mt-14 text-center">
+        <main className="text-center">
           <Outlet />
         </main>
         <ScrollRestoration />
