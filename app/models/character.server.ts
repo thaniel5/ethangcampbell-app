@@ -28,18 +28,19 @@ export interface CharacterResponse {
 }
 
 export async function getCharacters(
-  page: string,
-  searchString: string
+  page: number | null,
+  searchString: string | null
 ): Promise<CharacterResponse> {
   const characterSearchParams = new URLSearchParams();
   const characterUrl = new URL("https://rickandmortyapi.com/api/character");
   if (page) {
-    characterSearchParams.set("page", page);
+    characterSearchParams.set("page", `${page}`);
   }
   if (searchString) {
     characterSearchParams.set("name", searchString);
   }
   characterUrl.search = characterSearchParams.toString();
+
   const characterResponse = await fetch(characterUrl);
   if (!characterResponse.ok) {
     if (characterResponse.status === 404) {
