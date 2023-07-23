@@ -1,6 +1,10 @@
 import { json, type LoaderArgs } from "@remix-run/node";
-import { Link, useLoaderData } from "@remix-run/react";
-import { Form } from "@remix-run/react";
+import { Form, Link, useLoaderData } from "@remix-run/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+import { Button } from "~/components/ui/button";
+import { Label } from "~/components/ui/label";
+import { Input } from "~/components/ui/input";
 import { getCharacters } from "~/models/character.server";
 
 export const loader = async ({ request }: LoaderArgs) => {
@@ -46,46 +50,46 @@ export default function RickAndMorty() {
 
   return (
     <div className="mx-auto w-5/6 pt-8 lg:py-20">
-      <Form className="mx-auto flex justify-between gap-3 rounded border-2 border-gray-400 px-4 py-4 lg:w-2/3">
-        <label className="flex flex-wrap content-center font-semibold text-gray-200">
+      <Form className="mx-auto flex justify-between gap-3 rounded border-2 bg-secondary px-4 py-4 text-secondary-foreground lg:w-2/3">
+        <Label className="flex flex-wrap content-center font-semibold">
           Name
-        </label>
-        <input
+        </Label>
+        <Input
           type="text"
           name="name"
           defaultValue={data.searchString ?? ""}
-          className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
+          className="w-full rounded border px-2 py-1 text-lg"
         />
         <input type="hidden" name="page" value="1" />
-        <button className="rounded bg-blue-600 px-4 py-2 text-gray-200 hover:bg-blue-700 focus:bg-blue-500">
-          Search
-        </button>
+        <Button className="rounded px-4 py-2">Search</Button>
       </Form>
       {data.info.count > 0 ? (
         <>
           <div className="mx-auto flex w-full py-4 lg:w-2/3">
-            <div className="flex flex-1 flex-wrap content-center justify-start text-gray-200">{`Page ${page} of ${data.info.pages}`}</div>
+            <div className="flex flex-1 flex-wrap content-center justify-start">{`Page ${page} of ${data.info.pages}`}</div>
             <div className="flex gap-3">
-              <Link
-                to={`?${prevSearchParams.toString()}`}
-                className={`rounded px-4 py-2 text-gray-200 hover:bg-gray-400${
-                  page <= 1
-                    ? " pointer-events-none bg-gray-600"
-                    : " bg-gray-500"
-                }`}
-              >
-                &lt;
-              </Link>
-              <Link
-                to={`?${nextSearchParams.toString()}`}
-                className={`rounded px-4 py-2 text-gray-200 hover:bg-gray-400${
-                  page >= data.info.pages
-                    ? " pointer-events-none bg-gray-600"
-                    : " bg-gray-500"
-                }`}
-              >
-                &gt;
-              </Link>
+              <Button asChild size="icon">
+                {page > 1 ? (
+                  <Link to={`?${prevSearchParams.toString()}`}>
+                    <ChevronLeft className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <button disabled>
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                )}
+              </Button>
+              <Button asChild size="icon" disabled={page >= data.info.pages}>
+                {page < data.info.pages ? (
+                  <Link to={`?${nextSearchParams.toString()}`}>
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <button disabled>
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
+                )}
+              </Button>
             </div>
             <div className="flex-1"></div>
           </div>
@@ -93,11 +97,9 @@ export default function RickAndMorty() {
             {data.characters.map((character) => (
               <div
                 key={character.image}
-                className="rounded border-2 border-gray-400 px-2 py-2"
+                className="rounded border-2 bg-secondary px-2 py-2 text-secondary-foreground"
               >
-                <h1 className="text-2xl font-semibold text-gray-200">
-                  {character.name}
-                </h1>
+                <h1 className="text-2xl font-semibold">{character.name}</h1>
                 <img
                   alt={character.name}
                   src={character.image}
@@ -108,7 +110,7 @@ export default function RickAndMorty() {
           </div>
         </>
       ) : (
-        <h1 className="py-24 text-3xl text-gray-200">
+        <h1 className="py-24 text-3xl">
           No Rick and Morty Images Match Your Search
         </h1>
       )}

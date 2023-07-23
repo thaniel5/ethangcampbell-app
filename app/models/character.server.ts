@@ -29,7 +29,7 @@ export interface CharacterResponse {
 
 export async function getCharacters(
   page: number | null,
-  searchString: string | null
+  searchString: string | null,
 ): Promise<CharacterResponse> {
   const characterSearchParams = new URLSearchParams();
   const characterUrl = new URL("https://rickandmortyapi.com/api/character");

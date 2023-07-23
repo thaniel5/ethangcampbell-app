@@ -1,12 +1,14 @@
 import { Link } from "@remix-run/react";
 
+import { Button } from "~/components/ui/button";
+
 export default function About() {
   return (
     <div className="mx-auto w-5/6 py-8 lg:w-1/3 lg:py-40">
-      <h1 className="text-6xl font-semibold text-gray-100">
+      <h1 className="text-6xl font-semibold">
         <div>About Me</div>
       </h1>
-      <div className="pt-16 text-gray-200">
+      <div className="pt-16">
         <p>
           My name is Ethan Campbell. I am a professional web developer living in
           Carmel, Indiana. I have been working for almost a decade in various
@@ -18,13 +20,12 @@ export default function About() {
           and have a wonderful son who is still a toddler.
         </p>
         <p className="pt-6">
-          The github repo for this site is located at{" "}
-          <Link
-            to="https://github.com/thaniel5/ethangcampbell-app"
-            className="text-blue-500 hover:text-blue-700"
-          >
-            https://github.com/thaniel5/ethangcampbell-app
-          </Link>
+          The github repo for this site is located at
+          <Button variant="link">
+            <Link to="https://github.com/thaniel5/ethangcampbell-app">
+              https://github.com/thaniel5/ethangcampbell-app
+            </Link>
+          </Button>
         </p>
       </div>
     </div>

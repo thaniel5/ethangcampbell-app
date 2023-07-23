@@ -1,13 +1,14 @@
 import { Link } from "@remix-run/react";
+import { Button } from "~/components/ui/button";
 
 export default function Index() {
   return (
     <div className="mx-auto pt-8 lg:pt-40">
-      <h1 className="text-6xl font-semibold text-gray-100">
+      <h1 className="text-6xl font-semibold">
         <div>Ethan Campbell</div>
-        <div className="text-green-500">Web Dev</div>
+        <div>Web Dev</div>
       </h1>
-      <div className="pt-16 text-gray-200">
+      <div className="pt-16">
         <p>
           I am a professional web developer focused on high quality user
           experiences.
@@ -16,13 +17,12 @@ export default function Index() {
           my work.
         </p>
         <p className="pt-6">
-          The github repo for this site is located at{" "}
-          <Link
-            to="https://github.com/thaniel5/ethangcampbell-app"
-            className="text-blue-500 hover:text-blue-700"
-          >
-            https://github.com/thaniel5/ethangcampbell-app
-          </Link>
+          The github repo for this site is located at
+          <Button variant="link">
+            <Link to="https://github.com/thaniel5/ethangcampbell-app">
+              https://github.com/thaniel5/ethangcampbell-app
+            </Link>
+          </Button>
         </p>
       </div>
     </div>

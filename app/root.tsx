@@ -14,6 +14,7 @@ import {
 import { type PropsWithChildren } from "react";
 
 import stylesheet from "~/tailwind.css";
+import { Button } from "./components/ui/button";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -30,19 +31,32 @@ function Document({ children }: PropsWithChildren) {
         <Meta />
         <Links />
       </head>
-      <body className="h-full bg-gray-700">
-        <header className="w-full py-5 font-semibold text-gray-300">
-          <div className="flex justify-center gap-7">
-            <NavLink to="/" className="hover:text-green-500">
+      <body className="h-full">
+        <header className="flex w-full justify-center gap-7 py-5 font-semibold">
+          <Button variant="link">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
               Home
             </NavLink>
-            <NavLink to="rickandmorty" className="hover:text-green-500">
+          </Button>
+          <Button variant="link">
+            <NavLink
+              to="rickandmorty"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
               Rick and Morty
             </NavLink>
-            <NavLink to="about" className="hover:text-green-500">
+          </Button>
+          <Button variant="link">
+            <NavLink
+              to="about"
+              className={({ isActive }) => (isActive ? "underline" : "")}
+            >
               About
             </NavLink>
-          </div>
+          </Button>
         </header>
         <main className="text-center">{children}</main>
         <ScrollRestoration />
@@ -90,7 +104,7 @@ export function ErrorBoundary() {
 
   return (
     <Document>
-      <div className="py-40 text-gray-200">{content}</div>
+      <div className="py-40">{content}</div>
     </Document>
   );
 }
