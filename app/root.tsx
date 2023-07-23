@@ -14,7 +14,7 @@ import {
 import { type PropsWithChildren } from "react";
 
 import stylesheet from "~/tailwind.css";
-import { Button } from "./components/ui/button";
+import { buttonVariants } from "./components/ui/button";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
@@ -33,30 +33,36 @@ function Document({ children }: PropsWithChildren) {
       </head>
       <body className="h-full">
         <header className="flex w-full justify-center gap-7 py-5 font-semibold">
-          <Button variant="link">
-            <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? "underline" : "")}
-            >
-              Home
-            </NavLink>
-          </Button>
-          <Button variant="link">
-            <NavLink
-              to="rickandmorty"
-              className={({ isActive }) => (isActive ? "underline" : "")}
-            >
-              Rick and Morty
-            </NavLink>
-          </Button>
-          <Button variant="link">
-            <NavLink
-              to="about"
-              className={({ isActive }) => (isActive ? "underline" : "")}
-            >
-              About
-            </NavLink>
-          </Button>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `${buttonVariants({ variant: "link" })}${
+                isActive ? " underline" : ""
+              }`
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="rickandmorty"
+            className={({ isActive }) =>
+              `${buttonVariants({ variant: "link" })}${
+                isActive ? " underline" : ""
+              }`
+            }
+          >
+            Rick and Morty
+          </NavLink>
+          <NavLink
+            to="about"
+            className={({ isActive }) =>
+              `${buttonVariants({ variant: "link" })}${
+                isActive ? " underline" : ""
+              }`
+            }
+          >
+            About
+          </NavLink>
         </header>
         <main className="text-center">{children}</main>
         <ScrollRestoration />

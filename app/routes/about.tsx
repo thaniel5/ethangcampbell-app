@@ -21,7 +21,7 @@ export default function About() {
         </p>
         <p className="pt-6">
           The github repo for this site is located at
-          <Button variant="link">
+          <Button asChild variant="link">
             <Link to="https://github.com/thaniel5/ethangcampbell-app">
               https://github.com/thaniel5/ethangcampbell-app
             </Link>
